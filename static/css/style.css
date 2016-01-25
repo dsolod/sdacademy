@@ -13,5 +13,6 @@ body {
 .myclass { margin: 10px;}
 
 .mytable tr > td { text-align:center ; margin:3px;}
+.media-body {font-size: larger;}
 
 
