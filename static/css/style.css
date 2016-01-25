@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+
+.centrimg   {
+    float:centr; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+   	  }
+.rightimg  {
+    float: right; /* Выравнивание по правому краю  */ 
+    margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+ 	   }
+.myclass { margin: 10px;}
+
+.mytable tr > td { text-align:center ; margin:3px;}
+
+
