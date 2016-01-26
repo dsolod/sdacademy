@@ -5,6 +5,7 @@ body {
 .centrimg   {
     float:centr; /* Выравнивание по левому краю */
     margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+    /*height:205px; /*width:198px;*/
    	  }
 .rightimg  {
     float: right; /* Выравнивание по правому краю  */ 
@@ -12,7 +13,8 @@ body {
  	   }
 .myclass { margin: 10px;}
 
-.mytable tr > td { text-align:center ; margin:3px;}
+
 .media-body {font-size: larger;}
+.list-group {color:black;border:none;}
 
 
