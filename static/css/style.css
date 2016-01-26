@@ -16,5 +16,10 @@ body {
 
 .media-body {font-size: larger;}
 .list-group {color:black;border:none;}
+tbody th {font-weight: 400}
+.table tr:hover {  color: green;     text-decoration: underline; font-weight: bold;}
+.mytable {width:400px; left:40px;}
 
-
+ .mytable td { border-width: 2px  ;padding: 1px;
+	border-style: inset;
+	border-color: gray;}
