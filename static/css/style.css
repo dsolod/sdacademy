@@ -20,6 +20,8 @@ tbody th {font-weight: 400}
 .table tr:hover {  color: green;     text-decoration: underline; font-weight: bold;}
 .mytable {width:400px; left:40px;}
 
- .mytable  th , .mytable td { border-width: 2px  ;padding: 1px;
+.mytable  th , .mytable td { border-width: 2px  ;padding: 1px;
 	border-style: inset;
 	border-color: gray;}
+
+.newfooter { margin: 7px 7px 7px 0;}
