@@ -24,4 +24,6 @@ tbody th {font-weight: 400}
 	border-style: inset;
 	border-color: gray;}
 
-.newfooter { margin: 7px 7px 7px 0;}
+.newfooter { margin: 7px 7px 7px 0; font-weight: bold;}
+.newfooter2 { margin: 7px 7px 7px 0; color: black;font-weight: bold; }
+.pclass { color:red;}
