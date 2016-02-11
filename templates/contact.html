@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Почетные питонодушители</title>
 
+    {% load staticfiles %}
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-     <link href="../static/css/style.css" rel="stylesheet">
+     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,9 +31,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="index.html">Main</a></li>
-            <li class="active"><a href="contact.html">Contact</a></li>
-            <li><a href="student_list.html">Students</a></li>
+      
+            <li><a href="{% url 'views.index' %}">Main</a></li>
+            <li class="active"><a href="{% url 'views.contact' %}">Contacts</a></li>
+            <li><a href="{% url 'views.student_list' %}">Students</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -48,7 +51,7 @@
     <div class="row">
       <div class="col-xs-6 col-md-3">
         <a  class="thumbnail">
-          <img src="../static/images/boss.jpg" alt="python" class="centrimg">
+          <img src="{% static 'images/boss.jpg' %}" alt="python" class="centrimg">
           <ul class="list-group">
   <li class="list-group-item"><h2>Director</h2></li>
   <li class="list-group-item">Name: BB</li>
@@ -63,7 +66,7 @@
 
       <div class="col-xs-6 col-md-3">
         <a  class="thumbnail">
-         <img src="../static/images/manager1.jpg" alt="python" class="centrimg">
+         <img src="{% static 'images/manager1.jpg' %}" alt="python" class="centrimg">
               <ul class="list-group">
   <li class="list-group-item"><h2>Manager</h2></li>
   <li class="list-group-item">Name: Manager</li>
@@ -79,7 +82,7 @@
 
       <div class="col-xs-6 col-md-3">
         <a  class="thumbnail">
-          <img src="../static/images/team.jpg" alt="python" class="centrimg">
+          <img src="{% static 'images/team.jpg' %}" alt="python" class="centrimg">
                     <ul class="list-group">
   <li class="list-group-item"><h2>Founder</h2></li>
   <li class="list-group-item">Name: team "питонодушители"</li>

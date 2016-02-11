@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>наши душки</title>
 
+    {% load staticfiles %}
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-     <link href="../static/css/style.css" rel="stylesheet">
+     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,9 +30,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="index.html">Main</a></li>
-            <li><a href="contact.html">Contacts</a></li>
-            <li class="active"><a href="student_list.html">Students</a></li>
+     
+
+            <li><a href="{% url 'views.index' %}">Main</a></li>
+            <li><a href="{% url 'views.contact' %}">Contacts</a></li>
+            <li class="active"><a href="{% url 'views.student_list' %}">Students</a></li>
+
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -59,8 +63,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-           <td><a href="student_detail.html">1</a></td>
+          <tr> 
+           <td><a href="{% url 'views.student_detail' %}">1</a></td>
             <td>Властелин</td>
             <td>Черный</td>
             <td>Нью-Джерси США</td>

@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>overload</title>
 
+    {% load staticfiles %}
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-     <link href="../static/css/style.css" rel="stylesheet">
+     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,9 +30,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Main</a></li>
-            <li><a href="contact.html">Contacts</a></li>
-            <li><a href="student_list.html">Students</a></li>
+
+            <li><a href="{% url 'views.index' %}">Main</a></li>
+            <li><a href="{% url 'views.contact' %}">Contacts</a></li>
+            <li><a href="{% url 'views.student_list' %}">Students</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -45,7 +47,7 @@
         <div class="myclass">
 <h2>Чёрный Властелин (ЧВ, Black Overlord)</h2>
 
-         <img src="../static/images/black.jpg" alt="python" class="centrimg">
+         <img src="{% static 'images/black.jpg' %}" alt="python" class="centrimg">
 
 <h3>Student`s card</h3>
 
