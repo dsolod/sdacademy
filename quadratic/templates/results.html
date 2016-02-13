@@ -1,19 +1,22 @@
 Квадратное уравнение a*x*x + b*x + c = 0
-<ul>
-	<li>a = {{ a }}</li>
-	{% if  text_a  %}
-	{{ text_a }}
-	{% endif %}
 
-	<li>b = {{ b }}</li>
-	{% if  text_b  %}
-	{{ text_b }}
-	{% endif %}
-	<li>c = {{ c }}</li>
-		{% if  text_c  %}
-	{{ text_c }}
-	{% endif %}
+
+<ul>
+    <li>a = {{ a }}</li>
+    {% if  text_a  %}
+    {{ text_a }}
+    {% endif %}
+
+    <li>b = {{ b }}</li>
+    {% if  text_b  %}
+    {{ text_b }}
+    {% endif %}
+    <li>c = {{ c }}</li>
+        {% if  text_c  %}
+    {{ text_c }}
+    {% endif %}
 </ul>
+
 <br>
 {% if  text_diskriminant  %}
 Дискриминант:{{ diskriminant }}
