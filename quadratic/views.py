@@ -16,8 +16,13 @@ def quadratic_results(request):
     #print int(a)
     #for let in [a,b,c]:
     #   print let
-    if text_a or text_b or text_c:
+    if text_a:
+        print text_a
+    #print text_b
+    #print text_c
+    if (text_a and text_b and text_c) or int(a) == 0:
         diskriminant = ""
+        text_diskriminant = ""
     else:
         b = int(b)
         a = int(a) 
@@ -31,11 +36,12 @@ def quadratic_results(request):
         if diskriminant > 0:
             x1 = (-b + math.sqrt(diskriminant))/(2.0*a)
             x2 = (-b - math.sqrt(diskriminant))/(2.0*a)
-            text_diskriminant = 'Квадратное уравнение имеет два действительных корня: x1 = '+ str(x1) +' x2 = '+ str(x2) 
+            text_diskriminant = 'Квадратное уравнение имеет два действительных корня: x1 = '+ str(x1) +' x2 = '+ str(x2)
 
 
+         
     return render(request, 'results.html', 
- {            
+        {            
             'a' : a,
             'b' : b,
             'c' : c,
