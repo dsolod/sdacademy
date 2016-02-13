@@ -2,7 +2,7 @@
 
 # Create your views here.
 from django.shortcuts import get_object_or_404, render
-
+from django.template import RequestContext
 
 def index(request):
     return render(request, 'index.html')
@@ -15,4 +15,5 @@ def student_list(request):
 
 def student_detail(request):
     return render(request, 'student_detail.html')
+
 
