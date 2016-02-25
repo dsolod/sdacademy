@@ -29,7 +29,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'students:list' %}?course_id={{ course.id }}">Students</a></li>
+            <li><a href="{% url 'students:list' %}?course_id={{ pk }}">Students</a></li>
 
           </ul>
         </div><!-- /.nav-collapse -->
@@ -41,7 +41,7 @@
          <div class="myclass">
 
     <br>   <br>  
- 
+ <H2>   {{ course }}</H2>
   <table class="table">
         <thead>
           <tr>
@@ -53,12 +53,12 @@
         </thead>
         <tbody>
 
-             {% for lesson in course.lesson_set.all %}
+             {% for lesson in courses_list %}
           <tr> 
           	<td>{{ lesson.id }}</td>
             <td>{{ lesson.subject }}</td>
             <td>{{ lesson.description }}</td>
-   <td>{{ lesson.course }}</td>
+
           </tr>
               {% endfor %}
 
