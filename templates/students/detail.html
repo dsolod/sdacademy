@@ -29,7 +29,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'student_list' %}">Students</a></li>
+            <li><a href="{% url 'students:list' %}">Students</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -49,7 +49,9 @@
           <tr> <td>почта</td><td>{{ student.email }}</td></tr>
           <tr> <td>логин skype</td><td>{{ student.skype }}</td></tr>
           <tr> <td>телефон</td><td>{{ student.phone }}</td></tr>      
-          <tr> <td>курсы</td><td>{% for course in student.courses.all %}{{ course }}<br/>{% endfor %}</td></tr>      
+          <tr> <td>курсы</td><td>{% for course in student.courses.all %}
+  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
+            {% endfor %}</td></tr>      
 
 
 
