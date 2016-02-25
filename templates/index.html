@@ -29,20 +29,45 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'index' %}">Main</a></li>
             <li><a href="{% url 'contact' %}">Contacts</a></li>
-            <li><a href="{% url 'student_list' %}">Students</a></li>
+            <li><a href="{% url 'students:list' %}">Students</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
-
-    <br>   <br>  
-
 
 
 
       
   <div class="jumbotron">
          <div class="myclass">
+
+    <br>   <br>  
+ <div>  <h2>PythonAcademy Description</h2>
+
+
+</div>
+  
+    
+ <table class="table">
+        <thead>
+          <tr>
+            <th>Курс</th>
+            <th>Описание</th>
+   
+          </tr>
+        </thead>
+        <tbody>
+             {% for course in courses_list %}
+          <tr> 
+           <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
+            <td>{{ course.short_description }}</td>
+ 
+          </tr>
+              {% endfor %}
+
+</tbody>
+</table>
+
 
 <div class="media">
   <a class="pull-right" >

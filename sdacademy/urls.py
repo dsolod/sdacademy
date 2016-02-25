@@ -8,10 +8,15 @@ from django.conf.urls.static import static
 urlpatterns = patterns('',
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^quadratic/results/', include('quadratic.urls', namespace="quadratic")),
+    url(r'^students/', include('students.urls', namespace="students")),
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'sdacademy.views.index',name='index'),
+    url(r'^courses/', include('courses.urls', namespace="courses")),
+    url(r'^$', include('courses.urls', namespace="courses")),
+    url(r'^index/', include('courses.urls', namespace="courses")),
+
+#    url(r'^$', 'sdacademy.views.index',name='index'),
     url(r'^index/', 'sdacademy.views.index',name='index'),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^contact/', 'sdacademy.views.contact', name='contact'),
     url(r'^student_list/', 'sdacademy.views.student_list', name='student_list'),
     url(r'^student_detail/', 'sdacademy.views.student_detail', name='student_detail'),
