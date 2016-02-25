@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
 class IndexView(generic.ListView):
-    template_name = 'students/list.html'
+    template_name = '../templates/students/list.html'
     context_object_name = 'students_list'
     
 
@@ -26,7 +26,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Student
-    template_name = 'students/detail.html'
+    template_name = '../templates/students/detail.html'
 
 
 

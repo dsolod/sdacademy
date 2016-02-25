@@ -20,7 +20,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Course
-    template_name = 'courses/detail.html'
+    template_name = '../templates/courses/detail.html'
 
 #    def get_context_data(self, **kwargs):
 #        print self.request.GET
