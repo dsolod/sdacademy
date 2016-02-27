@@ -9,7 +9,7 @@ from .models import Student
 
 class StudentAdmin(admin.ModelAdmin):
 
-    list_display = ['name', 'surname', 'email', 'skype']
+    list_display = ['fullname',  'email', 'skype']
     search_fields = ['surname','email' ]
     list_filter = ['courses']
 #    filter_horizontal = ['name', 'surname']
