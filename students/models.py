@@ -20,3 +20,4 @@ class Student(models.Model):
     def fullname(self):
         return self.name + ' ' + self.surname
 
+    fullname.short_description = "Full name"
