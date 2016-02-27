@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from courses.models import Course, Lesson
-
+from coaches.models import Coach
 
 '''
 class IndexView(generic.ListView):
@@ -20,11 +20,15 @@ def detail(request, pk):
     
     lessons = Lesson.objects.filter(course=pk)
     course = Course.objects.get(id=pk)
-#    print course
+    coache = Coach.objects.get(id=course.coach.id)
+    assistant = Coach.objects.get(id=course.assistant.id)
+#    print course.coach
     return render(request, '../templates/courses/detail.html', 
         {  'courses_list': lessons,
             'pk': pk,
-            'course': course
+            'course': course,
+            'coache': coache,
+            'assistant' : assistant
          })
 
 '''   

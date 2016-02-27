@@ -41,38 +41,22 @@
          <div class="myclass">
 
     <br>   <br>  
-<H2>   {{ course }}</H2>
-<H3>   Преподаватели </H3>
-Учитель
-<a > {{ coache.user.first_name }}
-  {{ coache.user.last_name }}</a>
-   {{ coache.description }}
-   <br> 
-Ассистент
-    {{ assistant.user.first_name }}
-  {{ assistant.user.last_name }}
-   {{ assistant.description }}
-   <br> 
+ <H2>{{ coache.user.first_name }} {{ coache.user.last_name }} </H2>
   <table class="table">
-        <thead>
-          <tr>
-          	<th>#</th>
-            <th>Тема</th>
-            <th>Описание</th>
-   
-          </tr>
-        </thead>
+
         <tbody>
+          <tr> <td>дата рождения</td><td>{{ coache.date_of_birth }}</td></tr>
+          <tr> <td>адрес</td><td>{{ coache.address }}</td></tr>
+          <tr> <td>почта</td><td>{{ coache.email }}</td></tr>
+          <tr> <td>логин skype</td><td>{{ coache.skype }}</td></tr>
+          <tr> <td>телефон</td><td>{{ coache.phone }}</td></tr>      
+          <tr> <td>курсы учитель</td><td>{% for course in student.courses.all %}
+  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
+            {% endfor %}</td></tr>      
 
-             {% for lesson in courses_list %}
-          <tr> 
-          	<td>{{ lesson.id }}</td>
-            <td>{{ lesson.subject }}</td>
-            <td>{{ lesson.description }}</td>
-
-          </tr>
-              {% endfor %}
-
+          <tr> <td>курсы ассистент</td><td>{% for course in student.courses.all %}
+  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
+            {% endfor %}</td></tr> 
 
 
 </tbody>

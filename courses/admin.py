@@ -16,7 +16,7 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ['name']
     inlines = [LessonInline]
     fieldsets = [
-        (None  ,            {'fields': ['name','short_description', 'description']}),
+        (None  ,            {'fields': ['name','short_description', 'description', 'coach', 'assistant']}),
   
                 ]
 admin.site.register(Course, CourseAdmin)
