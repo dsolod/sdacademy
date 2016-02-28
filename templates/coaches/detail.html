@@ -50,12 +50,26 @@
           <tr> <td>почта</td><td>{{ coache.email }}</td></tr>
           <tr> <td>логин skype</td><td>{{ coache.skype }}</td></tr>
           <tr> <td>телефон</td><td>{{ coache.phone }}</td></tr>      
-          <tr> <td>курсы учитель</td><td>{% for course in student.courses.all %}
-  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
+          <tr> <td>курсы учитель</td>
+            <td>{% for cour in course %}
+  <a href="{% url 'courses:detail' cour.id %}">{{ cour.name}}</a>
+Студенты курса
+  <a href="{% url 'students:list' %}?course_id={{ cour.id }}">
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+</button>
+<a>
+  <br>
             {% endfor %}</td></tr>      
 
-          <tr> <td>курсы ассистент</td><td>{% for course in student.courses.all %}
-  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
+          <tr> <td>курсы ассистент</td><td>{% for cour in assist %}
+  <a href="{% url 'courses:detail' cour.id %}">{{ cour.name }}</a>Студенты курса
+  <a href="{% url 'students:list' %}?course_id={{ cour.id }}">
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+</button>
+<a>
+  <br>
             {% endfor %}</td></tr> 
 
 
@@ -71,8 +85,9 @@
 
 
 
-<div class="newfooter" >
 
+<div class="newfooter" >
+admin@admin.com
 Маленькие дети!
 <p class ="pclass">Ни за что на свете</p>
 Не ходите в Африку,

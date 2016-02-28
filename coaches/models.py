@@ -8,7 +8,7 @@ class Coach(models.Model):
         ('F', 'Female')
         )
 
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User,related_name='user',)
     date_of_birth = models.DateField()
     email = models.EmailField()
     gender = models.CharField(max_length=30, choices=GENDER_CHOICES)

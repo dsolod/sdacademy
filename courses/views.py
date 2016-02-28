@@ -24,7 +24,7 @@ def detail(request, pk):
     assistant = Coach.objects.get(id=course.assistant.id)
 #    print course.coach
     return render(request, '../templates/courses/detail.html', 
-        {  'courses_list': lessons,
+        {   'courses_list': lessons,
             'pk': pk,
             'course': course,
             'coache': coache,

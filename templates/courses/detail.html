@@ -43,14 +43,16 @@
     <br>   <br>  
 <H2>   {{ course }}</H2>
 <H3>   Преподаватели </H3>
-Учитель
-<a > {{ coache.user.first_name }}
+Учитель (Coach) <br>
+<a href="{% url 'coaches:detail' course.coach.id %}"> {{ coache.user.first_name }}
   {{ coache.user.last_name }}</a>
+
+
    {{ coache.description }}
    <br> 
-Ассистент
-    {{ assistant.user.first_name }}
-  {{ assistant.user.last_name }}
+Ассистент (Assistant) <br>
+  <a href="{% url 'coaches:detail' course.assistant.id %}">  {{ assistant.user.first_name }}
+  {{ assistant.user.last_name }} </a>
    {{ assistant.description }}
    <br> 
   <table class="table">
