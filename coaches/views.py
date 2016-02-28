@@ -10,7 +10,7 @@ def detail(request, pk):
     coache = Coach.objects.get(id=pk)
     course = Course.objects.filter(coach=pk)
     assist = Course.objects.filter(assistant=pk)
-    print assist,pk
+#    print assist,pk
 #    print course.coach
     return render(request, '../templates/coaches/detail.html', 
         {  
