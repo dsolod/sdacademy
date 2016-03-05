@@ -2,7 +2,7 @@ from django.shortcuts import render
 from coaches.models import Coach
 from courses.models import Course
 # Create your views here.
-
+import datetime
 
 def detail(request, pk):
     
@@ -16,5 +16,6 @@ def detail(request, pk):
         {  
             'coache': coache,
             'course': course,
-            'assist': assist
-         })
+            'assist': assist,
+            'pub_date': datetime.date(2015, 04, 1)
+                     })
