@@ -29,7 +29,9 @@
           <ul class="nav navbar-nav">
             <li class="{% block nav_clas_index %}{% endblock%}"><a href="{% url 'index' %}">Main</a></li>
             <li class="{% block nav_clas_contact %}{% endblock%}"><a href="{% url 'contact' %}">Contacts</a></li>
-            <li class="{% block nav_clas_students %}{% endblock%}"><a href="{% url 'students:list' %}">Students</a></li>
+
+            <li class="{% block nav_clas_students %}{% endblock%}"><a href="{% url 'students:list' %}{% block course_stud %}{% endblock %}">Students</a></li>
+            
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
