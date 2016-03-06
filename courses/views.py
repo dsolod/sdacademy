@@ -27,7 +27,7 @@ def detail(request, pk):
         {   'courses_list': lessons,
             'pk': pk,
             'course': course,
-            'coache': coache,
+            'coach': coache,
             'assistant' : assistant
          })
 

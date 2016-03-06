@@ -17,16 +17,15 @@
 <h2>{{ course }}</h2>
 <h3>Преподаватели</h3>
 Учитель (Coach) <br>
-<a href="{% url 'coaches:detail' course.coach.id %}">{{ coache.user.first_name }} {{ coache.user.last_name }}</a>
 
-<br>
-   {{ coache.description }}
-   <br> 
+{% include "include/instructor_include.html" with instruktor=course.coach %}
+
+
+
 Ассистент (Assistant)<br>
-  <a href="{% url 'coaches:detail' course.assistant.id %}">{{ assistant.user.first_name }} {{ assistant.user.last_name }}</a>
-  <br>
-   {{ assistant.description }}
-   <br> 
+
+{% include "include/instructor_include.html" with instruktor=course.assistant %}
+
   <table class="table">
         <thead>
           <tr>
@@ -42,7 +41,7 @@
           <tr> 
           	<td>{{ lesson.id }}</td>
             <td>{{ lesson.subject }}</td>
-            <td>{{ lesson.description|truncatechars:"32" }}</td>
+            <td>{{ lesson.description|truncatechars:"35" }}</td>
 
           </tr>
               {% endfor %}
