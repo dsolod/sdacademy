@@ -10,11 +10,17 @@
 {% block content %}
 
 
+
+
+
  <div class="jumbotron">
          <div class="myclass">
 
+
+
     <br>   <br>  
 <h2>{{ course }}</h2>
+{{ course.description|truncatechars:"32" }}
 <h3>Преподаватели</h3>
 Учитель (Coach) <br>
 
@@ -41,7 +47,7 @@
           <tr> 
           	<td>{{ lesson.id }}</td>
             <td>{{ lesson.subject }}</td>
-            <td>{{ lesson.description|truncatechars:"35" }}</td>
+            <td>{{ lesson.description }}</td>
 
           </tr>
               {% endfor %}
