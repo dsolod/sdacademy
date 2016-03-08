@@ -22,7 +22,7 @@ def quadratic_results(request):
         form = QuadraticForm(request.GET)
         
         if form.is_valid():
-            print form.clean_a()
+            form.clean_a()
 
             a = form.cleaned_data['a']
             b = form.cleaned_data['b']
@@ -35,11 +35,12 @@ def quadratic_results(request):
             if diskriminant == 0:
                 x = -b/(2.0*a)
                 text_diskriminant = answers[1] + str(round(x, 1))
+                #print x
             if diskriminant > 0:
                 x1 = (-b + math.sqrt(diskriminant))/(2.0*a)
                 x2 = (-b - math.sqrt(diskriminant))/(2.0*a)
                 text_diskriminant = answers[2]+ str(round(x1, 1)) +', x2 = '+ str(round(x2, 1))
-
+                #print x1
     else:
         form = QuadraticForm()
 
