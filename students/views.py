@@ -46,10 +46,13 @@ def create(request):
             messages.success(request, 'Student ' + data['name'] +
              ' ' + data['surname'] + ' has been successfully added.')
             form.save()
+            return redirect('students:list')
     else:
         form = StudentModelForm()
-    return render(request, '../templates/students/add.html', 
+        return render(request, '../templates/students/add.html', 
         {'form': form})
+
+            
 
 
 def edit(request, pk):
@@ -76,8 +79,8 @@ def remove(request, pk):
 
         app.delete()
         return redirect('students:list')
-
-    return render(request, '../templates/students/remove.html', {'app': app})
+    else:
+        return render(request, '../templates/students/remove.html', {'app': app})
 
 
 '''
@@ -85,3 +88,5 @@ class DetailView(generic.DetailView):
     model = Student
     template_name = '../templates/students/detail.html'
 '''
+
+
