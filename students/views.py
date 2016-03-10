@@ -75,7 +75,7 @@ def remove(request, pk):
      ' will be deleted.')
     if request.method == "POST":
         messages.success(request, 'Info on ' + app.name + ' ' + app.surname +
-         ' has been successfully deleted.')
+         ' has been sucessfully deleted.')
 
         app.delete()
         return redirect('students:list')
