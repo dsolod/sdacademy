@@ -19,7 +19,17 @@
 
 
 
-    <br>   <br>  
+    <br>  
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+     <br>  
+
+
 <h2>{{ course }}</h2>
 {{ course.description|truncatechars:"32" }}
 <h3>Преподаватели</h3>
@@ -33,6 +43,7 @@
 
 {% include "include/instructor_include.html" with instruktor=course.assistant %}
 
+<a href="{% url 'courses:add_lesson' course.id %}">добавить урок</a>
   <table class="table">
         <thead>
           <tr>
