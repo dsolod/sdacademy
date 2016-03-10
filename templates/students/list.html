@@ -16,8 +16,9 @@
       
   <div class="jumbotron">
          <div class="myclass">
-
-    <br>   <br>  
+              <br>   
+<a href="{% url 'students:create' %}">Добавить нового студентаы</a>
+    <br>   
  <div>  <h2>PythonAcademy Description</h2>
 
 
@@ -49,7 +50,8 @@
 {% endfor %}
 </td>
 
- 
+<td><a href="{% url 'students:edit' student.id %}"><button type="button" class="btn btn-default">Изменить</button></a></td>
+<td><a href="{% url 'students:remove' student.id %}"><button type="button" class="btn btn-default">Удалить</button></a></td>
           </tr>
               {% endfor %}
 

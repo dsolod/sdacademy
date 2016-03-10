@@ -25,5 +25,5 @@ tbody th {font-weight: 400}
 	border-color: gray;}
 
 .newfooter { margin: 7px 7px 7px 0; font-weight: bold;}
-.newfooter2 { margin: 7px 7px 7px 0; color: black;font-weight: bold; }
+.newfooter2 { margin: 7px 7px 7px 0; color: black;font-weight: bold;  height: 60px; bottom: 0;  }
 .pclass { color:red;}
