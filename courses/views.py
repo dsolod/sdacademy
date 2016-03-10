@@ -74,14 +74,17 @@ def remove(request, pk):
 def add_lesson(request, pk):
     if request.method == "POST":
         form = LessonModelForm(request.POST)
-        #print request.POST
+
         if form.is_valid():
 
             data = form.cleaned_data
+
             messages.success(request, 'Lesson ' + data['subject'] +
              ' has been successfully added.')
+            course_app = Course.objects.get(name=data['course'])
+
             form.save()
-            return redirect('courses:detail', pk )
+            return redirect('courses:detail', course_app.id )
     else:
         form = LessonModelForm(initial={'course': pk})
         return render(request, '../templates/courses/add_lesson.html', 

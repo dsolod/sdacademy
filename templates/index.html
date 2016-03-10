@@ -30,7 +30,7 @@
 
 </div>
   
-  <a href="{% url 'courses:add' %}">добавить курс</a>  
+  <a href="{% url 'courses:add' %}"><button type="button" class="btn btn-default">добавить курс</button></a>  
  <table class="table">
         <thead>
           <tr>
@@ -44,8 +44,8 @@
           <tr> 
            <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
             <td>{{ course.short_description|title }}</td>
-          <td><a href="{% url 'courses:edit' course.id %}">edit</a></td>
-          <td><a href="{% url 'courses:remove' course.id %}">remove</a></td>
+<td><a href="{% url 'courses:edit' course.id %}"><button type="button" class="btn btn-default">Изменить</button></a></td>
+<td><a href="{% url 'courses:remove' course.id %}"><button type="button" class="btn btn-default">Удалить</button></a></td>
           </tr>
               {% endfor %}
 
