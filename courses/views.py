@@ -17,15 +17,24 @@ def detail(request, pk):
     
     lessons = Lesson.objects.filter(course=pk)
     course = Course.objects.get(id=pk)
-    coache = Coach.objects.get(id=course.coach.id)
-    assistant = Coach.objects.get(id=course.assistant.id)
-#    print course.coach
-    return render(request, '../templates/courses/detail.html', 
-            {'courses_list': lessons,
-            'pk': pk,
-            'course': course,
-            'coach': coache,
-            'assistant' : assistant})
+    context = {'pk': pk}
+    context['courses_list'] = lessons
+    context['course'] = course
+    try:
+        context['coach'] = Coach.objects.get(id=course.coach.id)
+    except:
+        pass
+    try:
+        context['assistant'] = Coach.objects.get(id=course.assistant.id)
+    except:
+        pass
+    print context
+    return render(request, '../templates/courses/detail.html',  context)
+#            {'courses_list': lessons,
+#            'pk': pk,
+#            'course': course,
+#            'coach': coache,
+#            'assistant' : assistant})
 
 
 def add(request):

@@ -29,15 +29,18 @@
 {{ course.description|truncatechars:"32" }}
 <h3>Преподаватели</h3>
 Учитель (Coach) <br>
-
+{% if coach %}
 {% include "include/instructor_include.html" with instruktor=course.coach %}
-
-
+{% else %}
+no coach <br>
+{% endif %}
 
 Ассистент (Assistant)<br>
-
+{% if assistant %}
 {% include "include/instructor_include.html" with instruktor=course.assistant %}
-
+{% else %}
+no assistant <br>
+{% endif %}
 <a href="{% url 'courses:add-lesson' course.id %}"><button type="button" class="btn btn-default">Добавить занятие</button></a>
   <table class="table">
         <thead>
