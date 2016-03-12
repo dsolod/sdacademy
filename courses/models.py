@@ -11,7 +11,7 @@ class Course(models.Model):
 
     def __unicode__(self):
         return self.name
-
+#name, short_description, description, coach
 
 class Lesson(models.Model):
     subject = models.CharField(max_length=30)
@@ -19,7 +19,6 @@ class Lesson(models.Model):
     description = models.TextField()
     course = models.ForeignKey(Course)
     order = models.PositiveIntegerField()
-
 
     def __unicode__(self):
         return self.subject

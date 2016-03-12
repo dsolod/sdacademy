@@ -31,7 +31,7 @@ def detail(request, pk):
 def add(request):
     if request.method == "POST":
         form = CourseModelForm(request.POST)
-        #print request.POST
+        print request.POST
         if form.is_valid():
 
             data = form.cleaned_data
@@ -39,10 +39,15 @@ def add(request):
              ' has been successfully added.')
             form.save()
             return redirect('index')
+        else:
+            form = CourseModelForm(request.POST)
+
     else:
         form = CourseModelForm()
-        return render(request, '../templates/courses/add.html', 
+    
+    return render(request, '../templates/courses/add.html', 
         {'form': form})
+
 
 
 def edit(request, pk):
@@ -52,6 +57,8 @@ def edit(request, pk):
         if form.is_valid():
             messages.success(request, 'The changes have been saved.')
             app = form.save()
+        else:
+            form = CourseModelForm(request.POST, instance=app)
     else:
         form = CourseModelForm(instance=app)
 
@@ -62,8 +69,7 @@ def remove(request, pk):
     app = Course.objects.get(id=pk)
     messages.info(request, 'Course ' + app.name + ' will be deleted.')
     if request.method == "POST":
-        messages.success(request, 'Course ' + app.name + 
-         ' has been deleted.')
+        messages.success(request, 'Course ' + app.name + ' has been deleted.')
 
         app.delete()
         return redirect('courses:courses_list')
@@ -85,7 +91,9 @@ def add_lesson(request, pk):
 
             form.save()
             return redirect('courses:detail', course_app.id )
+        else:
+            form = LessonModelForm(request.POST)
     else:
         form = LessonModelForm(initial={'course': pk})
-        return render(request, '../templates/courses/add_lesson.html', 
+    return render(request, '../templates/courses/add_lesson.html', 
         {'form': form})
