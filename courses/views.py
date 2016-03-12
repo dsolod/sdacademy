@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render,  HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from courses.models import Course, Lesson
@@ -38,10 +38,9 @@ def add(request):
             messages.success(request, 'Course ' + data['name'] +
              ' has been successfully added.')
             form.save()
-            #return HttpResponseRedirect('index')
-            courses = Course.objects.all()
-            return render(request, '../templates/index.html', 
-        {'courses_list': courses})
+            return HttpResponseRedirect(reverse('index'))
+
+       
         else:
             form = CourseModelForm(request.POST)
 
@@ -52,52 +51,57 @@ def add(request):
         {'form': form})
 
 
-
-
 def edit(request, pk):
-    app = Course.objects.get(id=pk)
-    if request.method == "POST":
-        form = CourseModelForm(request.POST, instance=app)
-        if form.is_valid():
-            messages.success(request, 'The changes have been saved.')
-            app = form.save()
-            return HttpResponseRedirect(reverse('courses:edit', args=(pk, )))
-        else:
+    try:
+        app = Course.objects.get(id=pk)
+        if request.method == "POST":
             form = CourseModelForm(request.POST, instance=app)
-    else:
-        form = CourseModelForm(instance=app)
+            if form.is_valid():
+                messages.success(request, 'The changes have been saved.')
+                app = form.save()
+                return HttpResponseRedirect(reverse('courses:edit', 
+                    args=(pk, )))
+            else:
+                form = CourseModelForm(request.POST, instance=app)
+        else:
+            form = CourseModelForm(instance=app)
 
-    return render(request, '../templates/courses/edit.html', {'form': form})
+        return render(request, '../templates/courses/edit.html', {'form': form})
+    except:
+        messages.success(request, 'Provided id ' + pk + ' does not exist.')
+        return HttpResponseRedirect(reverse('index'))
 
 
 def remove(request, pk):
-    app = Course.objects.get(id=pk)
-    messages.success(request, 'Course ' + app.name + ' will be deleted.')
-    if request.method == "POST":
-        messages.success(request, 'Course ' + app.name + ' has been deleted.')
-
-        app.delete()
-        #return redirect('courses:courses_list')
-        return HttpResponseRedirect(reverse('courses:courses_list'))
-    else:
-        return render(request, '../templates/courses/remove.html', {'app': app})
-
+    try:
+        app = Course.objects.get(id=pk)
+        messages.success(request, 'Course ' + app.name + ' will be deleted.')
+        if request.method == "POST":
+            messages.success(request, 'Course ' + app.name + ' has been deleted.')
+            app.delete()
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            return render(request, '../templates/courses/remove.html', 
+                {'app': app})
+    except:
+        messages.success(request, 'Provided id ' + pk + ' does not exist.')
+        return HttpResponseRedirect(reverse('index'))
+    
 
 def add_lesson(request, pk):
     if request.method == "POST":
         form = LessonModelForm(request.POST)
-
         if form.is_valid():
-
             data = form.cleaned_data
-
             messages.success(request, 'Lesson ' + data['subject'] +
              ' has been successfully added.')
             course_app = Course.objects.get(name=data['course'])
 
             form.save()
             #return redirect('courses:detail', course_app.id )
+            #return render(request,
             return HttpResponseRedirect(reverse('courses:detail', args=(course_app.id, )))
+
         else:
             form = LessonModelForm(request.POST)
     else:

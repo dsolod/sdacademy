@@ -11,13 +11,8 @@
 {% block content %}
 
 
-
-
-
  <div class="jumbotron">
-         <div class="myclass">
-
-
+     <div class="myclass">
 
     <br>  
 {% if messages %}
@@ -43,7 +38,7 @@
 
 {% include "include/instructor_include.html" with instruktor=course.assistant %}
 
-<a href="{% url 'courses:add-lesson' course.id %}">Добавить занятие</a>
+<a href="{% url 'courses:add-lesson' course.id %}"><button type="button" class="btn btn-default">Добавить занятие</button></a>
   <table class="table">
         <thead>
           <tr>
