@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render,  HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.views import generic
 from courses.models import Course, Lesson
 from coaches.models import Coach
@@ -38,7 +39,7 @@ def add(request):
             messages.success(request, 'Course ' + data['name'] +
              ' has been successfully added.')
             form.save()
-            return redirect('index')
+            return HttpResponseRedirect('index')
         else:
             form = CourseModelForm(request.POST)
 
@@ -57,6 +58,7 @@ def edit(request, pk):
         if form.is_valid():
             messages.success(request, 'The changes have been saved.')
             app = form.save()
+            return HttpResponseRedirect(reverse('courses:edit', args=(pk, )))
         else:
             form = CourseModelForm(request.POST, instance=app)
     else:
@@ -67,12 +69,13 @@ def edit(request, pk):
 
 def remove(request, pk):
     app = Course.objects.get(id=pk)
-    messages.info(request, 'Course ' + app.name + ' will be deleted.')
+    messages.success(request, 'Course ' + app.name + ' will be deleted.')
     if request.method == "POST":
         messages.success(request, 'Course ' + app.name + ' has been deleted.')
 
         app.delete()
-        return redirect('courses:courses_list')
+        #return redirect('courses:courses_list')
+        return HttpResponseRedirect(reverse('courses:courses_list'))
     else:
         return render(request, '../templates/courses/remove.html', {'app': app})
 
@@ -90,7 +93,8 @@ def add_lesson(request, pk):
             course_app = Course.objects.get(name=data['course'])
 
             form.save()
-            return redirect('courses:detail', course_app.id )
+            #return redirect('courses:detail', course_app.id )
+            return HttpResponseRedirect(reverse('courses:detail', args=(course_app.id, )))
         else:
             form = LessonModelForm(request.POST)
     else:
