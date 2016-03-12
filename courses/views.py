@@ -10,7 +10,7 @@ from django.contrib import messages
 def courses_list(request):
     courses = Course.objects.all()
     return render(request, '../templates/index.html', 
-        {  'courses_list': courses })
+        {'courses_list': courses})
 
 
 def detail(request, pk):
@@ -21,12 +21,11 @@ def detail(request, pk):
     assistant = Coach.objects.get(id=course.assistant.id)
 #    print course.coach
     return render(request, '../templates/courses/detail.html', 
-        {   'courses_list': lessons,
+            {'courses_list': lessons,
             'pk': pk,
             'course': course,
             'coach': coache,
-            'assistant' : assistant
-         })
+            'assistant' : assistant})
 
 
 def add(request):
@@ -39,7 +38,10 @@ def add(request):
             messages.success(request, 'Course ' + data['name'] +
              ' has been successfully added.')
             form.save()
-            return HttpResponseRedirect('index')
+            #return HttpResponseRedirect('index')
+            courses = Course.objects.all()
+            return render(request, '../templates/index.html', 
+        {'courses_list': courses})
         else:
             form = CourseModelForm(request.POST)
 
@@ -48,6 +50,7 @@ def add(request):
     
     return render(request, '../templates/courses/add.html', 
         {'form': form})
+
 
 
 
