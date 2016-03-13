@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^edit/(?P<pk>\d+)/', views.edit, name='edit'),
     url(r'^remove/(?P<pk>\d+)/', views.remove, name='remove'),
     url(r'^(?P<pk>\d+)/$', views.detail, name='detail'),
-    url(r'^(?P<pk>\d+)/add_lesson/', views.add_lesson, name='add-lesson'),
+    url(r'^(?P<pk>\d+)/add_lesson', views.add_lesson, name='add-lesson'),
 #    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
 
 )
