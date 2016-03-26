@@ -1,5 +1,6 @@
 from django.db import models
 from courses.models import Course
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Student(models.Model):
@@ -21,3 +22,5 @@ class Student(models.Model):
         return self.name + ' ' + self.surname
 
     fullname.short_description = "Full name"
+#    def get_absolute_url(self):
+#        return  reverse('students.views.edit', args=[str(self.id)])
