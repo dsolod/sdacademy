@@ -15,10 +15,11 @@ class StudentListView(ListView):
 
     def get_queryset(self):
         try:
-            cour= self.request.GET['course_id']
-            return Student.objects.filter(courses__in=cour)
+            cour = self.request.GET['course_id']
+            return Student.objects.filter(courses__in=cour)    
         except:
             return Student.objects.all()
+            
 
 
 class StudentDetailView(DetailView):
@@ -36,7 +37,7 @@ class StudentCreateView(CreateView):
 
     def form_valid(self, form):
         messages.success(self.request, 'Student ' + self.request.POST['name'] +
-             ' ' + self.request.POST['name'] + ' has been successfully added.')
+             ' ' + self.request.POST['surname'] + ' has been successfully added.')
         return super(StudentCreateView, self).form_valid(form)
 
 
@@ -74,7 +75,7 @@ class StudentDeleteView(DeleteView):
         return super(StudentDeleteView, self).delete(request, *args, **kwargs)
 
 '''
-def detail(request, pk):
+def detail(request, pk):l
     students = Student.objects.get(id=pk)
     return render(request, '../templates/students/detail.html', 
         {'student': students})
