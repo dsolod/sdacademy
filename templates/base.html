@@ -31,7 +31,8 @@
             <li class="{% block nav_clas_contact %}{% endblock%}"><a href="{% url 'contact' %}">Contacts</a></li>
 
             <li class="{% block nav_clas_students %}{% endblock%}"><a href="{% url 'students:list' %}{% block course_stud %}{% endblock %}">Students</a></li>
-            
+
+            <li class="{% block nav_clas_feedback %}{% endblock%}"><a href="{% url 'feedback:index' %}">Feedback</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->

@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+      {% load staticfiles %}
 
 
-{% block title %}{{ title }}{% endblock %}
-
-{% block nav_clas_index %}active{% endblock%}
+{% block title %}PythonAcademy Description{% endblock title %}
 
 
-{% block content %}>
+{% block nav_clas_feedback %}active{% endblock%}
 
- <div class="jumbotron">
-         <div class="myclass">
+
+{% block content %}
+<br><br><br><br>
+!!!!!!!!!!!!!!!!!!!!!!!!!
 
 {% if messages %}
 <ul class="messages">
@@ -20,17 +20,11 @@
 </ul>
 {% endif %}
 
-
-
-
 <form method="post">
   {% csrf_token %}
 {{ form.as_p }}
 <input type="submit"/>
 </form>
 
-
-
-
-
-{% endblock content %}s
+<br>
+{% endblock content %}

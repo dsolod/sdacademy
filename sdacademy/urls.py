@@ -15,6 +15,9 @@ urlpatterns = patterns('',
     url(r'^index/', include('courses.urls', namespace="courses")),
     url(r'^coaches/', include('coaches.urls', namespace="coaches")),
 
+   # url(r'^feedback/', 'feedbacks.views.FeedbackView.as_view()', name="feedback"),  
+     url(r'^feedback/', include('feedbacks.urls', namespace="feedback")),
+
 #    url(r'^$', 'sdacademy.views.index',name='index'),
     url(r'^index/', 'sdacademy.views.index',name='index'),
     url(r'^admin/', include(admin.site.urls)),
