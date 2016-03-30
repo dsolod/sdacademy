@@ -12,7 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 class StudentListView(ListView):
-
+    paginate_by = 2
     def get_queryset(self):
         try:
             cour = self.request.GET['course_id']

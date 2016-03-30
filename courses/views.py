@@ -21,13 +21,17 @@ class CourseDetailView(DetailView):
     context_object_name = 'courses'
 
     def get_context_data(self, **kwargs):
-        pk = self.kwargs['pk']
-        context = super(CourseDetailView, self).get_context_data(**kwargs)
-        context['lessons'] = Lesson.objects.filter(course__in=pk)
-        context['coach'] = Coach.objects.get(id=Course.objects.get(id=pk).coach.id)
-        context['assistant'] = Coach.objects.get(id=Course.objects.get(id=pk).assistant.id)
-        context['pk'] = pk
-        
+        try:
+            pk = self.kwargs['pk']
+            context = super(CourseDetailView, self).get_context_data(**kwargs)
+            context['lessons'] = Lesson.objects.filter(course__in=pk)
+            context['coach'] = Coach.objects.get(id=Course.objects.get(id=pk).coach.id)
+            context['assistant'] = Coach.objects.get(id=Course.objects.get(id=pk).assistant.id)
+            context['pk'] = pk
+            print context['coach']
+        except:
+            print "!!!"
+            pass            
         return context
 
 
