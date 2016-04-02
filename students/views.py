@@ -1,9 +1,10 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect 
+from django.core.exceptions import ObjectDoesNotExist
 from django.views import generic
 from students.models import Student
 from courses.models import Course
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from .forms import StudentModelForm
 from django.contrib import messages
 from django.views.generic.list import ListView
@@ -24,6 +25,34 @@ class StudentListView(ListView):
 
 class StudentDetailView(DetailView):
     model = Student
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        queryset = queryset.filter(pk=pk)
+        try:
+            obj = queryset.get()
+            return obj
+        except ObjectDoesNotExist:
+            messages.info(self.request, ('There are no Student with id = '
+            + pk ))
+        
+
+'''
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        print Student.objects.get(id=pk)
+        try:
+            Student.objects.get(id=pk)
+
+        except:
+             messages.info(self.request, ('There are no Student with id = '
+            + pk ))
+
+        return obj
+'''
+
 
 
 class StudentCreateView(CreateView):
@@ -55,14 +84,42 @@ class StudentUpdateView(UpdateView):
                             ' been sucessfully changed.'))
         return super(StudentUpdateView, self).form_valid(form)
 
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        queryset = queryset.filter(pk=pk)
+        try:
+            obj = queryset.get()
+            return obj
+        except ObjectDoesNotExist:
+            messages.info(self.request, ('There are no Student with id = '
+            + pk ))
+
 
 class StudentDeleteView(DeleteView):
     model = Student
     success_url = reverse_lazy('students:list')
+
+    #print pk
+    #comment = get_object_or_404(Comment, pk=comment_id)
+
+#    def get_object(self, queryset=None, **kwargs):
+#        print '1'
+#        obj = get_object_or_404(Student, id=self.kwargs['pk'])
+#        print '2'
+#        try:
+#            obj = super(StudentDeleteView, self).get_object()
+#        except:
+#                messages.info(self.request, 'There are no student with id '+ self.kwargs['pk'])
+#        print obj
+#        return obj
+
+
     def get_context_data(self, **kwargs):
         context = super(StudentDeleteView, self).get_context_data(**kwargs)
-        context['title'] = 'Student info suppression'
-        
+        context['title'] = 'Student info suppression' 
+
         app = Student.objects.get(id=self.kwargs['pk'])
         messages.info(self.request, 'Student ' + app.name + ' ' + app.surname +
                         ' will be deleted.')
@@ -73,6 +130,8 @@ class StudentDeleteView(DeleteView):
         messages.success(self.request, 'Info on ' + app.name + ' ' + app.surname +
          ' has been sucessfully deleted.')
         return super(StudentDeleteView, self).delete(request, *args, **kwargs)
+
+
 
 '''
 def detail(request, pk):l

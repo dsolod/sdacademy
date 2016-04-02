@@ -8,11 +8,21 @@
 
 
 {% block content %}
-
-
-
  <div class="jumbotron">
          <div class="myclass">
+          
+{% if messages %}
+
+<ul class="messages">
+{% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if coache %}
+
+
 
     <br>   <br>  
  <h2>{{ coache.user.first_name }} {{ coache.user.last_name }}</h2>
@@ -51,7 +61,7 @@
 </table>
 
 
-
+ {% endif %}
 
 
 
