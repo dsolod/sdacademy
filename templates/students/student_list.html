@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+
+
 {% load staticfiles %}
 
 
@@ -10,61 +12,53 @@
 
 {% block content %}
 
+    
+<div class="jumbotron">
+<div class="myclass"><br>  
 
-
-      
-  <div class="jumbotron">
-         <div class="myclass">
-              <br>   
 {% if messages %}
-
-<ul class="messages">
-{% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-{% endfor %}
-</ul>
+  <ul class="messages">
+  {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+  {% endfor %}
+  </ul>
 {% endif %}
 
 
 <a href="{% url 'students:create' %}">Добавить нового студента</a>
-    <br>   
- <div>  <h2>PythonAcademy Description</h2>
+<br>   
+<div>  <h2>PythonAcademy Description</h2></div>
 
-
-</div>
-  
-    
- <table class="table">
-        <thead>
-          <tr>
-          	<th>№</th>
-            <th>фамилия имя</th>
-            <th>адрес</th>
-            <th>skype</th>
-            <th>курсы</th>
+<table class="table">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>фамилия имя</th>
+      <th>адрес</th>
+      <th>skype</th>
+      <th>курсы</th>
    
-          </tr>
-        </thead>
-        <tbody>
-             {% for student in object_list %}
-          <tr> 
-          
-           <td>{{ student.id }}</td>
-            <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
-            <td>{{ student.address }}</td>
-            <td>{{ student.skype }}</td>
-            <td>
-{% for course in student.courses.all %}
-  <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
-{% endfor %}
-</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in object_list %}
+      <tr> 
+        <td>{{ student.id }}</td>
+        <td><a href="{% url 'students:detail' student.id %}">{{ student.surname }} {{ student.name }}</a></td>
+        <td>{{ student.address }}</td>
+        <td>{{ student.skype }}</td>
+        <td>
+          {% for course in student.courses.all %}
+            <a href="{% url 'courses:detail' course.id %}">{{ course }}</a><br>
+          {% endfor %}
+        </td>
 
-<td><a href="{% url 'students:edit' student.id %}"><button type="button" class="btn btn-default">Изменить</button></a></td>
-<td><a href="{% url 'students:remove' student.id %}"><button type="button" class="btn btn-default">Удалить</button></a></td>
-          </tr>
-              {% endfor %}
+        <td><a href="{% url 'students:edit' student.id %}"><button type="button" class="btn btn-default">Изменить</button></a></td>
+        <td><a href="{% url 'students:remove' student.id %}"><button type="button" class="btn btn-default">Удалить</button></a></td>
+      </tr>
+    {% endfor %}
 
-</tbody>
+  </tbody>
 </table>
 
 <div class="pagination">
@@ -82,5 +76,6 @@
         {% endif %}
     </span>
 </div>
+
 
 {% endblock content %}

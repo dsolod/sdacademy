@@ -1,5 +1,11 @@
-<a href="{% url 'coaches:detail' coach.id %}">{{ instruktor.user.first_name }} {{ instruktor.user.last_name }}</a>
+<tr>
+  <td>
+    <a href="{% url 'coaches:detail' coach.id %}">
+      {{ instruktor.user.first_name }} {{ instruktor.user.last_name }}
+    </a>
+    </td>
 
-<br>
+  <td>
    {{ instruktor.description }}
-   <br> 
+  </td> 
+</tr>

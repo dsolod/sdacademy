@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+
+
 {% load staticfiles %}
 
 
@@ -10,30 +12,26 @@
 
 {% block content %}>
 
- <div class="jumbotron">
-         <div class="myclass">
+<div class="jumbotron">
+<div class="myclass">
 
 
 {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
 {% endif %}
 
 
 {% if student %}
-
-<form method="post">
-  {% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Удалить"/>
-</form>
-
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Удалить"/>
+    </form>
 {% endif %}
-
-
 
 
 {% endblock content %}s

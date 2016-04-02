@@ -1,71 +1,66 @@
 {% extends "base.html" %}
+
+
 {% load staticfiles %}
 
 
 {% block title %}учитель душения{% endblock %}
 
 
-
-
 {% block content %}
- <div class="jumbotron">
-         <div class="myclass">
-          
-{% if messages %}
+  <div class="jumbotron">
+  <div class="myclass">
+      
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
 
-<ul class="messages">
-{% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-{% endfor %}
-</ul>
-{% endif %}
-
-{% if coache %}
-
-
-
-    <br>   <br>  
- <h2>{{ coache.user.first_name }} {{ coache.user.last_name }}</h2>
-  <table class="table">
-
+  {% if coache %}
+    <br><br>
+    <h2>{{ coache.user.first_name }} {{ coache.user.last_name }}</h2>
+      <table class="table">
         <tbody>
-          <tr> <td>дата рождения</td><td>{{ coache.date_of_birth|date:"d F, o" }}</td></tr>
-          <tr> <td>адрес</td><td>{{ coache.address }}</td></tr>
-          <tr> <td>почта</td><td>{{ coache.email }}</td></tr>
-          <tr> <td>логин skype</td><td>{{ coache.skype }}</td></tr>
-          <tr> <td>телефон</td><td>{{ coache.phone }}</td></tr>      
-          <tr> <td>курсы учитель</td>
-            <td>{% for cour in course %}
-  <a href="{% url 'courses:detail' cour.id %}">{{ cour.name}}</a>
-Студенты курса
-  <a href="{% url 'students:list' %}?course_id={{ cour.id }}">
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
-</button>
-<a>
-  <br>
-            {% endfor %}</td></tr>      
+          <tr><td>дата рождения</td><td>{{ coache.date_of_birth|date:"d F, o" }}</td></tr>
+          <tr><td>адрес</td><td>{{ coache.address }}</td></tr>
+          <tr><td>почта</td><td>{{ coache.email }}</td></tr>
+          <tr><td>логин skype</td><td>{{ coache.skype }}</td></tr>
+          <tr><td>телефон</td><td>{{ coache.phone }}</td></tr>      
+          <tr><td>курсы учитель</td>
+            <td>
+              {% for cour in course %}
+                <a href="{% url 'courses:detail' cour.id %}">{{ cour.name}}</a>
+                Студенты курса
+                <a href="{% url 'students:list' %}?course_id={{ cour.id }}">
+                  <button type="button" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+                  </button>
+                </a>
+                <br>
+              {% endfor %}</td></tr>      
 
-          <tr> <td>курсы ассистент</td><td>{% for cour in assist %}
-  <a href="{% url 'courses:detail' cour.id %}">{{ cour.name }}</a>Студенты курса
-  <a href="{% url 'students:list' %}?course_id={{ cour.id }}">
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-</button>
-<a>
-  <br>
-            {% endfor %}</td></tr> 
-
-
-</tbody>
-</table>
-
-
- {% endif %}
+          <tr><td>курсы ассистент</td>
+            <td>
+              {% for cour in assist %}
+                <a href="{% url 'courses:detail' cour.id %}">{{ cour.name }}</a>
+                Студенты курса
+                <a href="{% url 'students:list' %}?course_id={{ cour.id }}">
+                  <button type="button" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  </button>
+                </a>
+                <br>
+              {% endfor %}</td></tr> 
 
 
+        </tbody>
+      </table>
 
 
+  {% endif %}
 
 
 {% endblock content %}

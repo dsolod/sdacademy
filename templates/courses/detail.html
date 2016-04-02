@@ -1,81 +1,90 @@
 {% extends "base.html" %}
+
+
 {% load staticfiles %}
 
 
 {% block title %}курсы{% endblock %}
+
+
 {% block nav_clas_index %}active{% endblock%}
+
 
 {% block course_stud %}?course_id={{ pk }}{% endblock %}
 
 
 {% block content %}
-
-
- <div class="jumbotron">
-     <div class="myclass">
-
-    <br>  
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-     <br>  
-
-<h1>{{ courses.name }}</h1>
-<h2>{{ courses.short_description }}</h2>
-{{ courses.description|truncatechars:"32" }} <br>
-
-<h4>Преподаватели:</h4>
-Учитель (Coach) <br>
-{% if coach %}
-{% include "include/instructor_include.html" with instruktor=courses.coach %}
-{% else %}
-no coach <br>
-{% endif %}
-
-Ассистент (Assistant)<br>
-{% if assistant %}
-{% include "include/instructor_include.html" with instruktor=courses.assistant %}
-{% else %}
-no assistant <br>
-{% endif %}
-
-<a href="{% url 'courses:add-lesson' 1 %}"><button type="button" class="btn btn-default">Добавить занятие</button></a>
+  <div class="jumbotron">
+  <div class="myclass">
+  <br>  
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <br>  
+  <h1>{{ courses.name }}</h1>
+  <h2>{{ courses.short_description }}</h2>
+  {{ courses.description|truncatechars:"32" }}
+  <br>
+  <h4>Преподаватели:</h4>
+  <table class="table">
+    <thead>
+      Учитель (Coach)
+      <tr>
+        <th>Имя Фамилия</th>
+        <th>Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if coach %}
+      {% include "include/instructor_include.html" with instruktor=courses.coach %}
+    {% else %}
+      <tr><td>no coach</td></tr>
+    {% endif %}
+    </tbody>
+  </table>
 
   <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Тема</th>
-            <th>Описание</th>
-   
-          </tr>
-        </thead>
-        <tbody>
+    <thead>
+      Ассистент (Assistant)
+      <tr>
+        <th>Имя Фамилия</th>
+        <th>Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if assistant %}
+      {% include "include/instructor_include.html" with instruktor=courses.assistant %}
+    {% else %}
+      <tr><td>no assistant</td></tr>
+    {% endif %}
+    </tbody>
+  </table>
 
-             {% for lesso in lessons %}
+
+
+  <a href="{% url 'courses:add-lesson' 1 %}"><button type="button" class="btn btn-default">Добавить занятие</button></a><br>
+  <h3>Список занятий:</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Тема</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lesso in lessons %}
           <tr> 
             <td>{{ lesso.id }}</td>
             <td>{{ lesso.subject }}</td>
             <td>{{ lesso.description }}</td>
-
           </tr>
-              {% endfor %}
-
-
-
-</tbody>
-</table>
-
-
-
-
-
-
-
-
+        {% endfor %}
+      </tbody>
+    </table>
 
 {% endblock content %}

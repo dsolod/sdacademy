@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-      {% load staticfiles %}
+
+
+{% load staticfiles %}
 
 
 {% block title %}PythonAcademy Description{% endblock title %}
@@ -9,118 +11,118 @@
 
 
 {% block content %}
-
-
-      
+   
   <div class="jumbotron">
-         <div class="myclass">
-
-    <br> 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+    <div class="myclass">
+      <br> 
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
 
       <br>  
- <div>  <h2>PythonAcademy Description</h2>
+      <div>
+        <h2>PythonAcademy Description</h2>
+      </div>
+      
+      <a href="{% url 'courses:add' %}"><button type="button" class="btn btn-default">добавить курс</button></a>
 
-
-</div>
-  
-  <a href="{% url 'courses:add' %}"><button type="button" class="btn btn-default">добавить курс</button></a>  
- <table class="table">
+      <table class="table">
         <thead>
           <tr>
             <th>Курс</th>
             <th>Описание</th>
-   
           </tr>
         </thead>
         <tbody>
-             {% for course in courses_list %}
-          <tr> 
-           <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
-            <td>{{ course.short_description|title }}</td>
-<td><a href="{% url 'courses:edit' course.id %}"><button type="button" class="btn btn-default">Изменить</button></a></td>
-<td><a href="{% url 'courses:remove' course.id %}"><button type="button" class="btn btn-default">Удалить</button></a></td>
-          </tr>
-              {% endfor %}
+          {% for course in courses_list %}
+            <tr> 
+              <td><a href="{% url 'courses:detail' course.id %}">{{ course.name|upper }}</a></td>
+              <td>{{ course.short_description|title }}</td>
+              <td>
+                <a href="{% url 'courses:edit' course.id %}">
+                    <button type="button" class="btn btn-default">Изменить</button>
+                </a>
+              </td>
+              <td>
+                <a href="{% url 'courses:remove' course.id %}">
+                  <button type="button" class="btn btn-default">Удалить</button>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
 
-</tbody>
-</table>
-
-
-<div class="media">
-  <a class="pull-right" >
-    <img class="media-object" src="{% static 'images/sendbinary.asp.jpg' %}" alt="python">
-  </a>
-  <div class="media-body">
-    <h2>PythonAcademy Description</h2>
-  Настоящие питоны — крупные неядовитые змеи длиной от 1,2 (королевский питон, ангольский питон) до 10-12 м (сетчатый питон). К роду относятся одни из самых крупных змей в мире.Распространены в Африке к югу от Сахары, в Южной и Юго-Восточной Азии.Обитают в тропиках и субтропиках, как правило, во влажных тропических лесах, саваннах. Часто поселяются вблизи водоемов, хорошо плавают и могут подолгу находиться в воде. Неплохо лазают по деревьям.Питаются самыми разнообразными позвоночными животными: грызунами, зайцами, мелкими копытными, обезьянами, различными птицами, иногда поедают крупных ящериц и небольших крокодилов.
-  </div>
-  </div>
-
- 
-          <h2>Program:</h2>
-      
-<div class="media">
-<a class="pull-right" >
-    <img class="media-object" src="{% static 'images/python_noga.jpg' %}" alt="python">
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading">1. Ловля питона на ногу:</h3>
-Суровые негры ловят питонов на свою ногу. Нога обматывается тряпкой и засовывается в нору к питону. Питон любит ноги и поэтому не долго думает перед поклевкой. Поскольку выплюнуть наживку змеюка сразу не может, владельца ноги успевают быстро вытащить из норы с носком из питона. Питона разрезают, негра отпускают.
-</div>
-</div>
-
-<div class="media">
-<a class="pull-right" >
-    <img class="media-object" src="{% static 'images/python_ruka1.jpg' %}" alt="python">
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading">2. Ловля питона на руку: </h3>
-Для начала обматывают одну руку шкурой бизона. Предположительно (хотя бывает всякое) в эту руку вцепится гигантский змей.
-</div>
-</div>
+        </tbody>
+      </table>
 
 
+      <div class="media">
+        <a class="pull-right" >
+          <img class="media-object" src="{% static 'images/sendbinary.asp.jpg' %}" alt="python">
+        </a>
+        <div class="media-body">
+          <h2>PythonAcademy Description</h2>
+          Настоящие питоны — крупные неядовитые змеи длиной от 1,2 (королевский питон, ангольский питон) до 10-12 м (сетчатый питон). К роду относятся одни из самых крупных змей в мире.Распространены в Африке к югу от Сахары, в Южной и Юго-Восточной Азии.Обитают в тропиках и субтропиках, как правило, во влажных тропических лесах, саваннах. Часто поселяются вблизи водоемов, хорошо плавают и могут подолгу находиться в воде. Неплохо лазают по деревьям.Питаются самыми разнообразными позвоночными животными: грызунами, зайцами, мелкими копытными, обезьянами, различными птицами, иногда поедают крупных ящериц и небольших крокодилов.
+        </div>
+      </div>
 
-<div class="media">
-<a class="pull-right" >
-    <img class="media-object" src="{% static 'images/python_ruka2.jpg' %}" alt="python">
-  </a>
-  <div class="media-body">
- Находят змеиную нору в горах и лезут туда головой вперёд. Судя по размерам этой норы, туда влезет и большинство европейских мужчин. Только оно им надо? Я бы в жизни не полез. Змей прекрасно видит в темноте. Вернее, у него инфракрасное зрение. Человек теплый, поэтому змей, увидевший чернокожую вкусняшку, саму приползшую к нему в нору, приготавливается к броску. Чтобы запутать змея и самому что-то увидеть, охотник зажигает ветки. Они гораздо теплее тела человека, поэтому змей сильно озадачивается.
-</div>
-</div>
+     
+      <h2>Program:</h2>
+          
+      <div class="media">
+      <a class="pull-right" >
+          <img class="media-object" src="{% static 'images/python_noga.jpg' %}" alt="python">
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading">1. Ловля питона на ногу:</h3>
+          Суровые негры ловят питонов на свою ногу. Нога обматывается тряпкой и засовывается в нору к питону. Питон любит ноги и поэтому не долго думает перед поклевкой. Поскольку выплюнуть наживку змеюка сразу не может, владельца ноги успевают быстро вытащить из норы с носком из питона. Питона разрезают, негра отпускают.
+        </div>
+      </div>
+
+      <div class="media">
+        <a class="pull-right" >
+          <img class="media-object" src="{% static 'images/python_ruka1.jpg' %}" alt="python">
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading">2. Ловля питона на руку: </h3>
+          Для начала обматывают одну руку шкурой бизона. Предположительно (хотя бывает всякое) в эту руку вцепится гигантский змей.
+        </div>
+      </div>
 
 
 
-<div class="media">
-<a class="pull-right" >
-    <img class="media-object" src="{% static 'images/python_ruka3.jpg' %}" alt="python">
-  </a>
-  <div class="media-body">
-Подползши к змею вплотную, лучины гасятся, чтобы змей, наконец, увидел приползший к нему обед. Но ловкий чернокожий парень не зря неделю не кушал. Он подставляет змею руку, обмотанную шкурой бизона. Дезориентированный змей пытается прокусить шкуру, а голодный охотник свободной рукой перекрывает змею пищевод, чтобы змей случайно не сглотнул руку вместе со шкурой и самим охотником.
-</div>
-</div>
+      <div class="media">
+        <a class="pull-right" >
+          <img class="media-object" src="{% static 'images/python_ruka2.jpg' %}" alt="python">
+        </a>
+        <div class="media-body">
+          Находят змеиную нору в горах и лезут туда головой вперёд. Судя по размерам этой норы, туда влезет и большинство европейских мужчин. Только оно им надо? Я бы в жизни не полез. Змей прекрасно видит в темноте. Вернее, у него инфракрасное зрение. Человек теплый, поэтому змей, увидевший чернокожую вкусняшку, саму приползшую к нему в нору, приготавливается к броску. Чтобы запутать змея и самому что-то увидеть, охотник зажигает ветки. Они гораздо теплее тела  человека, поэтому змей сильно озадачивается.
+        </div>
+      </div>
 
 
-<div class="media">
-<a class="pull-right" >
-    <img class="media-object" src="{% static 'images/python_ruka4.jpg' %}" alt="python">
-  </a>
-  <div class="media-body">
-Вылезти обратно с шестиметровым змеем, весящим 10-15 кг за погонный метр, одному нереально. Но для этого и есть голодные товарищи чернокожего охотника. Если они не испугались подземного шипения, они должны вытащить охотника за ноги вместе с брыкающимся змеем.  Охотник, держа за горло змея, появляется на поверхности. Спрашивается, почему удав не задушил охотника? Потому что, когда тебе самому сдавят горло, душить других нету никакого желания.
-</div>
-</div>
+
+      <div class="media">
+        <a class="pull-right" >
+          <img class="media-object" src="{% static 'images/python_ruka3.jpg' %}" alt="python">
+        </a>
+        <div class="media-body">
+          Подползши к змею вплотную, лучины гасятся, чтобы змей, наконец, увидел приползший к нему обед. Но ловкий чернокожий парень не зря неделю не кушал. Он подставляет змею руку, обмотанную шкурой бизона. Дезориентированный змей пытается прокусить шкуру, а голодный охотник свободной рукой перекрывает змею пищевод, чтобы змей случайно не сглотнул руку вместе со шкурой и самим охотником.
+        </div>
+      </div>
 
 
+    <div class="media">
+      <a class="pull-right" >
+        <img class="media-object" src="{% static 'images/python_ruka4.jpg' %}" alt="python">
+      </a>
+      <div class="media-body">
+        Вылезти обратно с шестиметровым змеем, весящим 10-15 кг за погонный метр, одному нереально. Но для этого и есть голодные товарищи чернокожего охотника. Если они не испугались подземного шипения, они должны вытащить охотника за ноги вместе с брыкающимся змеем.  Охотник, держа за горло змея, появляется на поверхности. Спрашивается, почему удав не задушил охотника? Потому что, когда тебе самому сдавят горло, душить других нету никакого желания.
+      </div>
+    </div>
 
 {% endblock content %}
-
-
 

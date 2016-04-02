@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+
+
 {% load staticfiles %}
 
 
@@ -9,65 +11,51 @@
 
 
 {% block content %}
+  <br>
+  <div class="jumbotron">
+    <div class="myclass">
+      <div class="bs-example">
+        <div class="row">
+          <div class="col-xs-6 col-md-3">
+            <a  class="thumbnail">
+              <img src="{% static 'images/boss.jpg' %}" alt="python" class="centrimg">
+                <ul class="list-group">
+                  <li class="list-group-item"><h2>Director</h2></li>
+                  <li class="list-group-item">Name: BB</li>
+                  <li class="list-group-item">Skype: Bigboss</li>
+                  <li class="list-group-item">Email: Bigboss@oracle.com</li>
+                  <li class="list-group-item">Phone: 777 7777777</li>
+                </ul>
+            </a>
+          </div>
+        <div class="col-xs-6 col-md-3">
+          <a  class="thumbnail">
+           <img src="{% static 'images/manager1.jpg' %}" alt="python" class="centrimg">
+                <ul class="list-group">
+                  <li class="list-group-item"><h2>Manager</h2></li>
+                  <li class="list-group-item">Name: Manager</li>
+                  <li class="list-group-item">Skype: manager1987</li>
+                  <li class="list-group-item">Email: ofsc_expert@oracle.com</li>
+                  <li class="list-group-item">Phone: 87346583749384324523</li>
+                </ul>
+          </a>
+        </div>
 
-    <br>
 
-
-
-      <div class="jumbotron">
-        <div class="myclass">
-
-<div class="bs-example">
-    <div class="row">
-      <div class="col-xs-6 col-md-3">
-        <a  class="thumbnail">
-          <img src="{% static 'images/boss.jpg' %}" alt="python" class="centrimg">
-          <ul class="list-group">
-  <li class="list-group-item"><h2>Director</h2></li>
-  <li class="list-group-item">Name: BB</li>
-  <li class="list-group-item">Skype: Bigboss</li>
-  <li class="list-group-item">Email: Bigboss@oracle.com</li>
-  <li class="list-group-item">Phone: 777 7777777</li>
-
-</ul>
-        </a>
-      </div>
-
-
-      <div class="col-xs-6 col-md-3">
-        <a  class="thumbnail">
-         <img src="{% static 'images/manager1.jpg' %}" alt="python" class="centrimg">
+        <div class="col-xs-6 col-md-3">
+          <a  class="thumbnail">
+            <img src="{% static 'images/team.jpg' %}" alt="python" class="centrimg">
               <ul class="list-group">
-  <li class="list-group-item"><h2>Manager</h2></li>
-  <li class="list-group-item">Name: Manager</li>
-  <li class="list-group-item">Skype: manager1987</li>
-  <li class="list-group-item">Email: ofsc_expert@oracle.com</li>
-  <li class="list-group-item">Phone: 87346583749384324523</li>
-
-</ul>
-        </a>
-
+                <li class="list-group-item"><h2>Founder</h2></li>
+                <li class="list-group-item">Name: team "питонодушители"</li>
+                <li class="list-group-item">Skype: gnc.sd</li>
+                <li class="list-group-item">Email: gnc@oracle.com</li>
+                <li class="list-group-item">Phone: 1234567890</li>
+              </ul>
+          </a>
+        </div>
+       
       </div>
-
-
-      <div class="col-xs-6 col-md-3">
-        <a  class="thumbnail">
-          <img src="{% static 'images/team.jpg' %}" alt="python" class="centrimg">
-                    <ul class="list-group">
-  <li class="list-group-item"><h2>Founder</h2></li>
-  <li class="list-group-item">Name: team "питонодушители"</li>
-  <li class="list-group-item">Skype: gnc.sd</li>
-  <li class="list-group-item">Email: gnc@oracle.com</li>
-  <li class="list-group-item">Phone: 1234567890</li>
-
-</ul>
-        </a>
-      </div>
-     
-    </div>
-  </div><!-- /.bs-example -->
-
-
-
+    </div><!-- /.bs-example -->
 
 {% endblock content %}
